@@ -21,6 +21,7 @@ public class LevelsGroups : MonoBehaviour
 
     private void Start()
     {
+        SetPositionGroup();
         currentPanelIndex = 0;
         SetIcons();
     }
@@ -69,6 +70,16 @@ public class LevelsGroups : MonoBehaviour
             }
         }
     }
+
+    private void SetPositionGroup()
+	{
+		for (int i = 0; i < panels.Length; i++)
+		{
+            if (i == 0) continue;
+
+            panels[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(panels[i - 1].GetComponent<RectTransform>().anchoredPosition.x + 2000, panels[i].GetComponent<RectTransform>().anchoredPosition.y);
+		}
+	}
 
     public void Left()
     {
